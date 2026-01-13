@@ -1,15 +1,16 @@
 import { Project, Skill, SocialLink, PersonalInfo } from '@/types/portfolio';
+import { url } from 'inspector';
 
 // ============================================
 // PERSONAL INFO - Edit your information here
 // ============================================
 export const personalInfo: PersonalInfo = {
-  name: 'Seu Nome',
+  name: 'Apolo',
   role: 'Full Stack Developer',
-  bio: 'Desenvolvedor apaixonado por criar soluções elegantes e eficientes. Especializado em React, TypeScript e Node.js, com foco em experiências de usuário excepcionais e código limpo.',
-  email: 'seu@email.com',
-  location: 'São Paulo, Brasil',
-  avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
+  bio: 'Desenvolvedor • Automação • Inteligencia Artificial',
+  email: 'emailpprofissionaldaqapoucokkkk',
+  location: 'Rio Grande Do Sul, Brasil',
+  avatar: 'https://i.pinimg.com/736x/05/17/f0/0517f0b64bd1506ba32fbf13cdd29dfc.jpg',
   resumeUrl: '#',
 };
 
@@ -22,8 +23,11 @@ export const skills: Skill[] = [
   { name: 'Next.js', icon: '▲', category: 'frontend' },
   { name: 'Tailwind CSS', icon: '🎨', category: 'frontend' },
   { name: 'Node.js', icon: '🟢', category: 'backend' },
-  { name: 'PostgreSQL', icon: '🐘', category: 'backend' },
+  { name: 'Express.js', icon: '🚂', category: 'backend' },
+  { name: 'FastAPI', icon: '⚡', category: 'backend' },
+  { name: 'MongoDB', icon: '🍃', category: 'backend' }, // folha
   { name: 'Python', icon: '🐍', category: 'backend' },
+  { name: 'selenium', icon: '🔍', category: 'backend' },
   { name: 'Docker', icon: '🐳', category: 'tools' },
   { name: 'Git', icon: '📦', category: 'tools' },
   { name: 'Figma', icon: '🎯', category: 'tools' },
@@ -33,7 +37,7 @@ export const skills: Skill[] = [
 // SOCIAL LINKS - Add your social profiles
 // ============================================
 export const socialLinks: SocialLink[] = [
-  { name: 'GitHub', url: 'https://github.com/seuusuario', icon: 'github' },
+  { name: 'GitHub', url: 'https://github.com/Apoloundifinied', icon: 'github' },
   { name: 'LinkedIn', url: 'https://linkedin.com/in/seuusuario', icon: 'linkedin' },
   { name: 'Twitter', url: 'https://twitter.com/seuusuario', icon: 'twitter' },
 ];
@@ -44,66 +48,56 @@ export const socialLinks: SocialLink[] = [
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'E-commerce Platform',
-    description: 'Plataforma completa de e-commerce com carrinho, pagamentos e painel admin. Construída com React, Node.js e Stripe.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-    category: 'fullstack',
-    demoUrl: '#',
-    githubUrl: '#',
-    featured: true,
-  },
-  {
-    id: '2',
-    title: 'Task Management App',
-    description: 'Aplicativo de gerenciamento de tarefas com drag-and-drop, colaboração em tempo real e notificações.',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
-    technologies: ['React', 'TypeScript', 'Supabase', 'Tailwind'],
-    category: 'frontend',
-    demoUrl: '#',
-    githubUrl: '#',
-    featured: true,
-  },
-  {
-    id: '3',
-    title: 'API REST Microservices',
-    description: 'Arquitetura de microserviços escalável com autenticação JWT, rate limiting e documentação OpenAPI.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop',
-    technologies: ['Node.js', 'Docker', 'Redis', 'MongoDB'],
+    title: 'Bot Discord + Gatway Pagamentos',
+    description: 'Bot de Discord para gerenciamento de servidores com integração de gateway de pagamentos para pagarmentos dentro do servidor.',
+    image: 'https://i.imgur.com/ZuSjexA.gif',
+    technologies: ['node.js ', 'discord.js', 'pagamentos'],
     category: 'backend',
     demoUrl: '#',
     githubUrl: '#',
     featured: true,
   },
   {
-    id: '4',
-    title: 'Dashboard Analytics',
-    description: 'Dashboard interativo com gráficos em tempo real, filtros avançados e exportação de relatórios.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    technologies: ['React', 'D3.js', 'TypeScript', 'REST API'],
-    category: 'frontend',
+    id: '2',
+    title: 'Super Pomodoro Discord',
+    description: 'Bot Discord com FastAPI para gerenciamento de tarefas usando a técnica Pomodoro.',
+    image: 'https://i.imgur.com/WXA3FDf.gif',
+    technologies: ['javascript', 'FastAPI'],
+    category: 'backend',
     demoUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/Apoloundifinied/SUPER_POMODORO_DISCORD',
+    featured: true,
+  },
+  {
+    id: '3',
+    title: 'autoGroupPy - cria grupo automático no facebook',
+    description: 'Script em Python que automatiza a criação de grupos no Facebook usando Selenium.',
+    image: 'https://i.imgur.com/O4eQrkM.gif',
+    technologies: ['Node.js', 'selenium'],
+    category: 'backend',
+    demoUrl: '#',
+    githubUrl: 'https://github.com/Apoloundifinied/AutoGroupPy',
+    featured: true,
+  },
+  {
+    id: '4',
+    title: 'Veriatas - Assistente de lib',
+    description: 'Aplicação de chat em tempo real com WebSockets, suporte a mídia e criptografia end-to-end.',
+    image: 'https://i.imgur.com/p8ypvJo.gif',
+    technologies: ['React'],
+    category: 'frontend-end',
+    demoUrl: '#',
+    githubUrl: 'https://github.com/Apoloundifinied/veritas',
   },
   {
     id: '5',
-    title: 'Chat Real-time',
-    description: 'Aplicação de chat em tempo real com WebSockets, suporte a mídia e criptografia end-to-end.',
-    image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&h=600&fit=crop',
-    technologies: ['React', 'Socket.io', 'Node.js', 'MongoDB'],
+    title: 'Devnews - Plataforma de notícias para desenvolvedores',
+    description: 'Plataforma web que agrega notícias e artigos relevantes para desenvolvedores de software.',
+    image: 'https://i.imgur.com/x8JDlWT.gif',
+    technologies: ['FastAPI', 'html-css-js'],
     category: 'fullstack',
     demoUrl: '#',
-    githubUrl: '#',
-  },
-  {
-    id: '6',
-    title: 'Portfolio Generator',
-    description: 'Ferramenta para desenvolvedores criarem portfolios personalizados com temas e deploy automático.',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=600&fit=crop',
-    technologies: ['Next.js', 'MDX', 'Vercel', 'Tailwind'],
-    category: 'fullstack',
-    demoUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/Apoloundifinied/DevNews',
   },
 ];
 

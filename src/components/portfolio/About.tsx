@@ -59,21 +59,28 @@ export function About() {
           >
             <h3 className="text-2xl font-semibold mb-6">Minha História</h3>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                Como desenvolvedor, minha jornada começou com a curiosidade de entender como as 
-                coisas funcionam por trás das telas. Essa curiosidade se transformou em uma 
-                paixão por criar soluções que impactam positivamente a vida das pessoas.
-              </p>
-              <p>
-                Ao longo dos anos, desenvolvi expertise em diversas tecnologias e metodologias, 
-                sempre buscando o equilíbrio perfeito entre funcionalidade, performance e 
-                experiência do usuário.
-              </p>
-              <p>
-                Acredito que código limpo e arquitetura bem pensada são fundamentais para o 
-                sucesso de qualquer projeto. Meu objetivo é sempre entregar soluções que não 
-                apenas funcionem, mas que sejam escaláveis e fáceis de manter.
-              </p>
+  <p>
+      Minha jornada como desenvolvedor começou cedo, movida pela curiosidade em entender como as coisas funcionam por trás das telas.<br /><br />
+      Tenho 16 anos, moro no Rio Grande do Sul – Brasil, e sou autodidata, estudando programação e tecnologia de forma contínua há cerca de 3 anos.
+  </p>
+
+  <p>
+        Ao longo desse período, adquiri experiência com Python, JavaScript e TypeScript,<br />
+        além de frameworks como Vue, React e Next.js, dominando também HTML e CSS.<br /><br />
+        Já atuei como freelancer em diferentes projetos, como automações, web scrapers, criação de sites e desenvolvimento de bots de Discord —<br />
+        meu primeiro trabalho na área foi aos 14 anos.
+</p>
+
+<p>
+        Atualmente, meu principal foco está na área de Cybersecurity,<br />
+        onde estudo fundamentos como TCP/IP, protocolos de rede, Modelo OSI, Linux,<br />
+        noções iniciais de kernel e criação de scripts.<br /><br />
+        Também possuo experiência na criação de APIs com FastAPI e na implementação de soluções com IA,<br />
+        que utilizo como apoio ao desenvolvimento, não como substituição.<br /><br />
+        Acredito em código limpo, automação eficiente e aprendizado constante<br />
+        como base para construir soluções escaláveis e bem estruturadas.
+</p>
+
             </div>
 
             {/* Stats */}

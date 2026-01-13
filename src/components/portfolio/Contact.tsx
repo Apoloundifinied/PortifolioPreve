@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+
 import { personalInfo, socialLinks } from '@/data/portfolio';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
@@ -6,8 +8,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 import { Send, Mail, MapPin, Loader2, Github, Linkedin, Twitter } from 'lucide-react';
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
 const socialIcons = {
   github: Github,
@@ -45,11 +50,16 @@ export function Contact() {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-email', {
-        body: formData,
-      });
-
-      if (error) throw error;
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        PUBLIC_KEY
+      );
 
       toast({
         title: 'Mensagem enviada!',
@@ -58,7 +68,7 @@ export function Contact() {
 
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('EmailJS error:', error);
       toast({
         title: 'Erro ao enviar',
         description: 'Ocorreu um erro. Por favor, tente novamente.',
@@ -71,11 +81,9 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 md:py-32 relative">
-      {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
 
       <div ref={ref} className="section-container relative z-10">
-        {/* Section header */}
         <div
           className={cn(
             'text-center mb-16 opacity-0',
@@ -91,7 +99,7 @@ export function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Contact info */}
+          {/* Info */}
           <div
             className={cn(
               'opacity-0',
@@ -99,59 +107,39 @@ export function Contact() {
             )}
           >
             <h3 className="text-2xl font-semibold mb-6">Vamos Conversar</h3>
-            <p className="text-muted-foreground mb-8">
-              Estou sempre aberto a novas oportunidades, parcerias ou simplesmente 
-              uma boa conversa sobre tecnologia e desenvolvimento.
-            </p>
 
-            {/* Contact details */}
             <div className="space-y-4 mb-8">
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Mail size={18} className="text-primary" />
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-wide text-muted-foreground/70">Email</div>
-                  <a href={`mailto:${personalInfo.email}`} className="hover:text-primary transition-colors">
-                    {personalInfo.email}
-                  </a>
-                </div>
+              <div className="flex items-center gap-3">
+                <Mail size={18} className="text-primary" />
+                <a href={`mailto:${personalInfo.email}`}>
+                  {personalInfo.email}
+                </a>
               </div>
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <MapPin size={18} className="text-primary" />
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-wide text-muted-foreground/70">Localização</div>
-                  <span>{personalInfo.location}</span>
-                </div>
+              <div className="flex items-center gap-3">
+                <MapPin size={18} className="text-primary" />
+                <span>{personalInfo.location}</span>
               </div>
             </div>
 
-            {/* Social links */}
-            <div>
-              <h4 className="text-sm font-medium mb-4">Me encontre nas redes</h4>
-              <div className="flex gap-3">
-                {socialLinks.map((link) => {
-                  const Icon = socialIcons[link.icon as keyof typeof socialIcons];
-                  return (
-                    <a
-                      key={link.name}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all"
-                      aria-label={link.name}
-                    >
-                      {Icon && <Icon size={18} />}
-                    </a>
-                  );
-                })}
-              </div>
+            <div className="flex gap-3">
+              {socialLinks.map((link) => {
+                const Icon =
+                  socialIcons[link.icon as keyof typeof socialIcons];
+                return (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {Icon && <Icon size={18} />}
+                  </a>
+                );
+              })}
             </div>
           </div>
 
-          {/* Contact form */}
+          {/* Form */}
           <div
             className={cn(
               'opacity-0',
@@ -159,64 +147,39 @@ export function Contact() {
             )}
           >
             <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Nome
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Seu nome"
-                  required
-                  className="bg-secondary border-border focus:border-primary"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="seu@email.com"
-                  required
-                  className="bg-secondary border-border focus:border-primary"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Mensagem
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Conte-me sobre seu projeto ou ideia..."
-                  required
-                  rows={5}
-                  className="bg-secondary border-border focus:border-primary resize-none"
-                />
-              </div>
-              <Button
-                type="submit"
-                size="lg"
-                disabled={isSubmitting}
-                className="w-full glow-hover"
-              >
+              <Input
+                name="name"
+                placeholder="Seu nome"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+              <Input
+                name="email"
+                type="email"
+                placeholder="seu@email.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <Textarea
+                name="message"
+                rows={5}
+                placeholder="Sua mensagem..."
+                value={formData.message}
+                onChange={handleChange}
+                required
+              />
+
+              <Button type="submit" disabled={isSubmitting} className="w-full">
                 {isSubmitting ? (
                   <>
-                    <Loader2 size={18} className="mr-2 animate-spin" />
+                    <Loader2 className="mr-2 animate-spin" />
                     Enviando...
                   </>
                 ) : (
                   <>
-                    <Send size={18} className="mr-2" />
+                    <Send className="mr-2" />
                     Enviar Mensagem
                   </>
                 )}
