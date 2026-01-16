@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { navLinks } from '@/data/portfolio';
 import { useActiveSection, scrollToSection } from '@/hooks/useActiveSection';
-import { Menu, X } from 'lucide-react';
+import { useTheme } from '@/hooks/useTheme';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const activeSection = useActiveSection(navLinks.map((link) => link.id));
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,14 +66,24 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 hover:text-primary transition-colors"
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Theme Toggle + Mobile Menu Button */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="p-2 hover:text-primary transition-colors transition-theme rounded-lg hover:bg-secondary"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 hover:text-primary transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
