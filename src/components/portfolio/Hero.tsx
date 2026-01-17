@@ -16,6 +16,15 @@ export function Hero() {
       {/* Background gradient - More vibrant */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/8 via-transparent to-transparent pointer-events-none" />
       
+      {/* Background GIF with low opacity */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+        <img
+          src="https://i.pinimg.com/originals/8a/e1/04/8ae104a88d8fd8e5c4d1a9cbea4d4c96.gif"
+          alt="background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
       {/* Enhanced decorative elements with animations */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl pointer-events-none animate-float" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '4s' }} />

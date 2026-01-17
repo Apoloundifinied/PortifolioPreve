@@ -11,7 +11,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
   return (
-    <article
+    <article  
       className={cn(
         'group relative bg-card rounded-xl border border-border overflow-hidden card-hover opacity-0 hover:border-primary/50 transition-all duration-300',
         isVisible && 'animate-fade-up',

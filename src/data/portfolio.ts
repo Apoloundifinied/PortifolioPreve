@@ -10,7 +10,7 @@ export const personalInfo: PersonalInfo = {
   bio: 'Desenvolvedor • Automação • Inteligencia Artificial',
   email: 'emailpprofissionaldaqapoucokkkk',
   location: 'Rio Grande Do Sul, Brasil',
-  avatar: 'https://i.pinimg.com/736x/05/17/f0/0517f0b64bd1506ba32fbf13cdd29dfc.jpg',
+  avatar: 'https://i.imgur.com/FGFSOOA.jpeg',
   resumeUrl: '#',
 };
 
@@ -38,8 +38,6 @@ export const skills: Skill[] = [
 // ============================================
 export const socialLinks: SocialLink[] = [
   { name: 'GitHub', url: 'https://github.com/Apoloundifinied', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/seuusuario', icon: 'linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com/seuusuario', icon: 'twitter' },
 ];
 
 // ============================================
@@ -98,6 +96,26 @@ export const projects: Project[] = [
     category: 'fullstack',
     demoUrl: '#',
     githubUrl: 'https://github.com/Apoloundifinied/DevNews',
+  },
+    {
+    id: '6',
+    title: 'ValidCPF - lib de validação de CPF',
+    description: 'Este é um simples e funcional validador de CPF feito em JavaScript, agora disponível como pacote npm para fácil integração em seus projetos.',
+    image: 'https://i.pinimg.com/originals/ab/32/b2/ab32b287d5bc96d3dafe9c3ae2311d76.gif',
+    technologies: ['javascript', 'npm'],
+    category: 'backend',
+    demoUrl: '#',
+    githubUrl: 'https://github.com/Apoloundifinied/ApoloCpf',
+  },
+      {
+    id: '6',
+    title: 'node-cache-lite',
+    description: 'Uma biblioteca leve de cache em memória para Node.js, projetada para melhorar o desempenho de aplicações armazenando dados temporariamente.',
+    image: 'https://i.pinimg.com/originals/9a/ba/e1/9abae1a4d0ea8d4ae2c7288eecf80fe2.gif',
+    technologies: ['javascript', 'npm'],
+    category: 'backend',
+    demoUrl: '#',
+    githubUrl: 'https://www.npmjs.com/package/node-cache-lite?activeTab=readme',
   },
 ];
 
