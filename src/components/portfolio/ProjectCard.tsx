@@ -31,7 +31,7 @@ export function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
         {/* Featured badge with glow */}
         {project.featured && (
           <div className="absolute top-3 left-3 px-3 py-1.5 text-xs font-bold bg-primary text-primary-foreground rounded-md shadow-glow animate-pulse">
-            ⭐ Destaque
+            Destaque
           </div>
         )}
 

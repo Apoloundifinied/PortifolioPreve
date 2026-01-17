@@ -54,7 +54,7 @@ export const projects: Project[] = [
     technologies: ['node.js ', 'discord.js', 'pagamentos'],
     category: 'backend',
     demoUrl: '#',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/Apoloundifinied/GOPTRIX',
     featured: true,
   },
   {

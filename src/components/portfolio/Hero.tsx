@@ -52,7 +52,7 @@ export function Hero() {
                 isVisible && 'animate-fade-up'
               )}
             >
-              👋 Olá, eu sou
+              Olá, eu sou
             </p>
             
             <h1

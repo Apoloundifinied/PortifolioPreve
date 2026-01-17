@@ -94,7 +94,7 @@ export function Projects() {
               onClick={() => setShowAll(!showAll)}
               className="font-semibold hover:shadow-glow"
             >
-              {showAll ? '↑ Mostrar Menos' : `👁️ Ver Todos (${filteredProjects.length})`}
+              {showAll ? '↑ Mostrar Menos' : `Ver Todos (${filteredProjects.length})`}
             </Button>
           </div>
         )}
